@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #2c2c2c;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .login-panel {
+      width: 600px;
+      background: #fff;
+      padding: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    .btn-login {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .btn-login:hover {
+      background-color: #0056b3;
+    }
+
+    .error-message {
+      background-color: #ff4c4c;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+<div class="login-container">
+  <div class="login-panel">
+    <form action="/auth/login" method="POST" class="form-group">
+      <div th:if="${errorMessage != null}" class="error-message">
+        <span th:text="${errorMessage}"></span>
+      </div>
+      <label for="username">Username:</label>
+      <input id="username" name="username" type="text" class="form-control" placeholder="Enter Username" required />
+      <label for="password">Password:</label>
+      <input id="password" name="password" type="password" class="form-control" placeholder="Enter Password" required/>
+      <input type="submit" value="Login" class="btn-login mt-3"/>
+    </form>
+  </div>
+</div>
+</body>
+</html>
